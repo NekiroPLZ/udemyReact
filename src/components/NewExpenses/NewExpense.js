@@ -1,9 +1,17 @@
 import "../Sass/abstracts/NewExpense.scss";
 import ExpenseForm from "./ExpenseForm";
-const NewExpense = () => {
+const NewExpense = (props) => {
+  const saveExpenseHandler = (dataExpense) => {
+    const expenseData = {
+      ...dataExpense,
+      id: Math.random().toString(),
+    };
+    props.onAddExpense(expenseData);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSaveExpenseData={saveExpenseHandler} />
     </div>
   );
 };
